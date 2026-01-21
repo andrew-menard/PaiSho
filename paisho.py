@@ -463,6 +463,8 @@ def play_object(piece, column, row, gamestate, sky_bison_move=False):
     #print("Play object sky ison move is {}".format(sky_bison_move))
     piece.column = column
     piece.row = row
+    if piece in gamestate["board"]:
+        gamestate["board"].remove(piece)
     gamestate["board"].append(piece)
     if piece.type==PieceType.SKY_BISON:
         gamestate["player_with_sky_bison"] = gamestate["current_player"] 
@@ -472,8 +474,8 @@ def play_object(piece, column, row, gamestate, sky_bison_move=False):
     if gamestate["current_player"] == PlayerType.HOST:
         if piece in gamestate["unused_host_pieces"]:
             gamestate["unused_host_pieces"].remove(piece)
-        gamestate["turn_number"] = gamestate["turn_number"] + 1
         if not sky_bison_move:
+            gamestate["turn_number"] = gamestate["turn_number"] + 1
             if piece.type == PieceType.DRAGON:
                 set_turn(PlayerType.DIALOGBOX, PlayerType.HOST, DIALOGBOX_DRAGON)
             elif piece.type == PieceType.KOI_FISH:
