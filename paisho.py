@@ -600,42 +600,42 @@ def process_dragon_dialogbox_button_press(location, screen):
         return
     elif button==1:    
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if piece.row < 0 and piece.column >0 and abs(piece.row)+piece.column<=6:
                     pieces_to_remove.append(piece)
     elif button==2:
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if piece.row > 0 and piece.column >0 and piece.row+piece.column<=6:
                     pieces_to_remove.append(piece)
     elif button==3:    
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if piece.row > 0 and piece.column < 0 and abs(piece.row)+abs(piece.column)<=6:
                     pieces_to_remove.append(piece)
     elif button==4:
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if piece.row < 0 and piece.column < 0 and abs(piece.row)+abs(piece.column)<=6:
                     pieces_to_remove.append(piece)
     elif button==5:    
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if (piece.row < 0 and piece.column >0 and abs(piece.row)+piece.column>=8) and not (piece.row==-1 and piece.column==8) and not (piece.row==-8 and piece.column==1):
                     pieces_to_remove.append(piece)
     elif button==6:
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if (piece.row > 0 and piece.column >0 and piece.row+piece.column>=8) and not (piece.row==1 and piece.column==8) and not (piece.row==8 and piece.column==1):
                     pieces_to_remove.append(piece)
     elif button==7:    
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if (piece.row > 0 and piece.column < 0 and abs(piece.row)+abs(piece.column)>=8) and not (piece.row==1 and piece.column==-8) and not (piece.row==8 and piece.column==-1):
                     pieces_to_remove.append(piece)
     elif button==8:
         for piece in gamestate["board"]:
-            if piece.type == PieceType.JADE or piece.type== PieceType.JASMINE:
+            if piece.is_flower():
                 if (piece.row < 0 and piece.column < 0 and abs(piece.row)+abs(piece.column)>=8) and not (piece.row==-1 and piece.column==-8) and not (piece.row==-8 and piece.column==-1):
                     pieces_to_remove.append(piece)
     for piece in pieces_to_remove:
